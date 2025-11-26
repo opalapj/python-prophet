@@ -1,7 +1,8 @@
 import calendar
 
 import pandas as pd
-from nercast.classes import Period
+
+from forecast.classes import Period
 
 
 # For ForecastAccessor.

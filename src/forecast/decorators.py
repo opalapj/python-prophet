@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import wraps
 
-from nercast.classes import Model
+from forecast.classes import Model
 
 
 def _work_on_copy(fun):
