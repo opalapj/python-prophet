@@ -1,0 +1,17 @@
+[project]
+name = "forecast"
+version = "0.1.0"
+authors = [
+    {name = "Piotr Opała", email = "opalapj@gmail.com"},
+]
+license = {text = "MIT"}
+dependencies = []
+requires-python = ">=3.13"
+description = "Forecasting package considering annual, weekly, and daily seasonality, price shocks, and additional regressors."
+
+[tool.pdm]
+distribution = true
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"

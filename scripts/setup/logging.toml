@@ -1,0 +1,21 @@
+version = 1
+#disable_existing_loggers = false
+
+[root]
+handlers = ["console"]
+
+[loggers.catcher]
+handlers = ["exceptions"]
+propagate = false
+
+[handlers.console]
+class = "logging.StreamHandler"
+formatter = "rich"
+
+[handlers.exceptions]
+class = "logging.FileHandler"
+filename = "exceptions.log"
+formatter = "rich"
+
+[formatters.rich]
+format = "%(levelname)-8s | %(asctime)s | %(name)s | %(funcName)s | %(message)s"
