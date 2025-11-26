@@ -1,5 +1,8 @@
 import pandas as pd
 
+from forecast.constants import EXOGENOUS_VARIABLE_NAME
+from forecast.constants import INDEX_NAME
+
 
 def merge_spans(*spans):
     # `spans`: two-elements tuples consists start and end date str in ISO 8601 format
@@ -34,5 +37,18 @@ def match_tz(df, tz):
     df = df.tz_localize(
         tz=tz,
         ambiguous="infer",
+    )
+    return df
+
+
+def read_time_series(input_filepath):
+    # `input_filepath`: str
+    # return: dataframe
+    df = pd.read_csv(
+        filepath_or_buffer=input_filepath,
+        header=0,
+        names=[INDEX_NAME, EXOGENOUS_VARIABLE_NAME],
+        index_col=INDEX_NAME,
+        parse_dates=True,
     )
     return df

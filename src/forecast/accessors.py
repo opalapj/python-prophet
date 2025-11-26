@@ -1,11 +1,7 @@
 import numpy as np
 import pandas as pd
-from matplotlib import pyplot as plt
-
-
-# Prophet uses np.float_ class - deprecated in numpy>=2.0.0.
-np.float_ = np.float64
 import prophet as ph
+from matplotlib import pyplot as plt
 
 from forecast.classes import Regressor
 from forecast.classes import Seasonality
@@ -44,25 +40,6 @@ class ForecastAccessor:
                 f"{EXOGENOUS_VARIABLE_NAME!r} as column name with exogenous "
                 f"variable values."
             )
-
-    # @_work_on_copy
-    # def limit_training_set(self, number_of_training_years,
-    #                        first_day_of_forecast=None):
-    #     # `number_of_training_years`: int
-    #     # `first_day_of_forecast`: date str in ISO 8601 format
-    #     # return: dataframe
-    #     df = self._obj
-    #     if first_day_of_forecast is None:
-    #         # Assigning the first hour of the day following the last day
-    #         # of historical data.
-    #         forecast_start = (df.index.max() + pd.DateOffset(days=1)).floor('D')
-    #     else:
-    #         forecast_start = pd.Timestamp(first_day_of_forecast)
-    #     training_duration = pd.DateOffset(years=number_of_training_years)
-    #     training_start = forecast_start - training_duration
-    #     idx_mask = (df.index >= training_start) & (df.index < forecast_start)
-    #     df = df.loc[idx_mask]
-    #     return df
 
     @_work_on_copy
     def limit_training_set(self, start_date, end_date):
@@ -352,19 +329,6 @@ class ForecastAccessor:
     def write_time_series(self, output_filepath):
         # `output_filepath`: str
         self.model.forecast.to_csv(path_or_buf=output_filepath)
-
-
-def read_time_series(input_filepath):
-    # `input_filepath`: str
-    # return: dataframe
-    df = pd.read_csv(
-        filepath_or_buffer=input_filepath,
-        header=0,
-        names=[INDEX_NAME, EXOGENOUS_VARIABLE_NAME],
-        index_col=INDEX_NAME,
-        parse_dates=True,
-    )
-    return df
 
 
 @pd.api.extensions.register_index_accessor("cond")
