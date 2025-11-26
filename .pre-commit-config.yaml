@@ -15,7 +15,7 @@ repos:
       args: [
         "--force-single-line-imports",
         "--lines-after-imports=2",
-        "--project=my-package",
+        "--project=forecast",
         "--known-local-folder=setup",
       ]
     - id: flake8

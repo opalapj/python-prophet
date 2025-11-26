@@ -11,6 +11,8 @@ _settings = _setup / "settings.toml"
 _logging_config = _setup / "logging.toml"
 _logs = _setup / "logs.log"
 _data = _scripts / "data"
+_input = _data / "input"
+_output = _data / "output"
 
 
 class Setup:
