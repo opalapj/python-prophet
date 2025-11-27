@@ -4,3 +4,5 @@ training_end_date = "2024-07-31"
 forecast_start_date = "2024-08-01"
 number_of_forecast_years = 5
 include_training_years = true
+country = "PL"
+tz = "Europe/Warsaw"
